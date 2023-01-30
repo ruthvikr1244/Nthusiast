@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "332824633051",
+    "project_id": "nthusiast-fbeb3",
+    "storage_bucket": "nthusiast-fbeb3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:332824633051:android:fb2d19226a58ea1a5bb6fe",
+        "android_client_info": {
+          "package_name": "com.example.nthusiast"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "332824633051-grhpfcu5n8et4j6lmo2osaf8tas7m4e7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZ00w4q2XH9E0bfGm4Q0Yq9H2zIyh8C5M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "332824633051-grhpfcu5n8et4j6lmo2osaf8tas7m4e7.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "332824633051-1511frcs5lio1u2cl29dsc4qevintabu.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.nthusiast"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
