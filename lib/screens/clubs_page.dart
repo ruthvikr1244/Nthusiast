@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:nthusiast/screens/posts_page.dart';
 
 class clubCard {
   String name;
@@ -52,7 +53,12 @@ class clubs extends StatelessWidget {
                     padding: EdgeInsets.all(8),
                     itemBuilder: (BuildContext context, int index) {
                       return GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => Posts()),
+                          );
+                        },
                         child: Padding(
                           padding: EdgeInsets.all(8),
                           child: Container(
@@ -66,7 +72,7 @@ class clubs extends StatelessWidget {
                             ),
                             child: Padding(
                                 padding: EdgeInsets.all(10),
-                                child: Text(dataMap['name'])),
+                                child: Text("Hell")),
                           ),
                         ),
                       );
