@@ -28,6 +28,8 @@ class _PostsState extends State<Posts> {
               padding: EdgeInsets.all(8),
               itemCount: snapshot.data!.docs.length,
               itemBuilder: (context, index) {
+                var text = snapshot.data!.docs[index]["Content"].toString();
+
                 return Center(
                     child: Row(
                   children: <Widget>[
@@ -47,7 +49,9 @@ class _PostsState extends State<Posts> {
                         Text(snapshot.data!.docs[index]["Title"]),
                         SizedBox(
                           height: 50,
-                          child: Text(snapshot.data!.docs[index]["Content"]),
+                          child: Text(text.length > 15
+                              ? '${text.toString().substring(0, 28)}...'
+                              : text.toString()),
                         )
                       ],
                     )
