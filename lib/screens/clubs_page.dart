@@ -56,7 +56,8 @@ class clubs extends StatelessWidget {
                         onTap: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => Posts()),
+                            MaterialPageRoute(
+                                builder: (context) => PostsPage()),
                           );
                         },
                         child: Padding(
