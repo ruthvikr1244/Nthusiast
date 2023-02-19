@@ -8,6 +8,18 @@ class PostsPage extends StatelessWidget {
 
   PostsPage({Key? key}) : super(key: key);
 
+  void redirectToPostPage(context, snapshot, index, text) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+          builder: (context) => Post(
+              postTitle: snapshot.data!.docs[index]["Title"],
+              postContent: text,
+              postAuthor: snapshot.data!.docs[index]["Author"],
+              postTime: snapshot.data!.docs[index]["Time"].toDate())),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,135 +52,127 @@ class PostsPage extends StatelessWidget {
                               padding: const EdgeInsets.only(bottom: 20),
                               child: Stack(
                                 children: <Widget>[
-                                  Card(
-                                      elevation: 8,
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(15)),
-                                      child: Container(
-                                          clipBehavior:
-                                              Clip.antiAliasWithSaveLayer,
-                                          decoration: const BoxDecoration(
-                                              gradient: LinearGradient(
-                                                  begin: Alignment(0, 0),
-                                                  end: Alignment(1, 1),
-                                                  colors: <Color>[
-                                                    Color.fromRGBO(
-                                                        239, 40, 40, 0.94),
-                                                    Color.fromRGBO(
-                                                        255, 0, 0, 0.52)
-                                                  ]),
-                                              borderRadius: BorderRadius.all(
-                                                  Radius.circular(15))),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceAround,
-                                            children: <Widget>[
-                                              Column(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: [
-                                                  const Placeholder(
-                                                    fallbackHeight: 100,
-                                                    fallbackWidth: 100,
-                                                  ),
-                                                  Padding(
-                                                      padding: const EdgeInsets
-                                                              .fromLTRB(
-                                                          0, 20, 0, 0),
+                                  GestureDetector(
+                                    onTap: () => {
+                                      redirectToPostPage(
+                                          context, snapshot, index, text)
+                                    },
+                                    child: Card(
+                                        elevation: 8,
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(15)),
+                                        child: Container(
+                                            clipBehavior:
+                                                Clip.antiAliasWithSaveLayer,
+                                            decoration: const BoxDecoration(
+                                                gradient: LinearGradient(
+                                                    begin: Alignment(0, 0),
+                                                    end: Alignment(1, 1),
+                                                    colors: <Color>[
+                                                      Color.fromRGBO(
+                                                          239, 40, 40, 0.94),
+                                                      Color.fromRGBO(
+                                                          255, 0, 0, 0.52)
+                                                    ]),
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(15))),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.spaceAround,
+                                              children: <Widget>[
+                                                Column(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: [
+                                                    const Placeholder(
+                                                      fallbackHeight: 100,
+                                                      fallbackWidth: 100,
+                                                    ),
+                                                    Padding(
+                                                        padding:
+                                                            const EdgeInsets
+                                                                    .fromLTRB(
+                                                                0, 20, 0, 0),
+                                                        child: Text(
+                                                          snapshot.data!
+                                                                  .docs[index]
+                                                              ["Category"],
+                                                          style: const TextStyle(
+                                                              fontFamily:
+                                                                  "DoppioOne",
+                                                              fontSize: 18,
+                                                              color:
+                                                                  Colors.white),
+                                                        ))
+                                                  ],
+                                                ),
+                                                Column(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceEvenly,
+                                                  children: [
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsets.only(
+                                                              top: 15),
                                                       child: Text(
                                                         snapshot.data!
                                                                 .docs[index]
-                                                            ["Category"],
-                                                        style: const TextStyle(
-                                                            fontFamily:
-                                                                "DoppioOne",
-                                                            fontSize: 18,
-                                                            color:
-                                                                Colors.white),
-                                                      ))
-                                                ],
-                                              ),
-                                              Column(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceEvenly,
-                                                children: [
-                                                  Padding(
-                                                    padding:
-                                                        const EdgeInsets.only(
-                                                            top: 15),
-                                                    child: Text(
-                                                      snapshot.data!.docs[index]
-                                                          ["Title"],
-                                                      style: const TextStyle(
-                                                          fontFamily:
-                                                              'DoppioOne',
-                                                          fontSize: 20,
-                                                          color: Colors.white),
-                                                    ),
-                                                  ),
-                                                  SizedBox(
-                                                      height: 100,
-                                                      width: 200,
-                                                      child: Text(
-                                                        text,
-                                                        overflow:
-                                                            TextOverflow.fade,
+                                                            ["Title"],
                                                         style: const TextStyle(
                                                             fontFamily:
                                                                 'DoppioOne',
-                                                            fontSize: 12,
+                                                            fontSize: 20,
                                                             color:
                                                                 Colors.white),
-                                                      )),
-                                                  Padding(
-                                                      padding: const EdgeInsets
-                                                              .fromLTRB(
-                                                          100, 0, 0, 0),
-                                                      child: InkWell(
-                                                        onTap: () {
-                                                          Navigator.push(
-                                                            context,
-                                                            MaterialPageRoute(
-                                                                builder: (context) => Post(
-                                                                    postTitle: snapshot
-                                                                            .data!
-                                                                            .docs[index]
-                                                                        [
-                                                                        "Title"],
-                                                                    postContent:
-                                                                        text,
-                                                                    postAuthor: snapshot
-                                                                            .data!
-                                                                            .docs[index]
-                                                                        [
-                                                                        "Author"],
-                                                                    postTime: snapshot
-                                                                        .data!
-                                                                        .docs[
-                                                                            index]
-                                                                            ["Time"]
-                                                                        .toDate())),
-                                                          );
-                                                        },
-                                                        child: const Text(
-                                                          "Read More",
-                                                          textAlign:
-                                                              TextAlign.right,
-                                                          style: TextStyle(
+                                                      ),
+                                                    ),
+                                                    SizedBox(
+                                                        height: 100,
+                                                        width: 200,
+                                                        child: Text(
+                                                          text,
+                                                          overflow:
+                                                              TextOverflow.fade,
+                                                          style: const TextStyle(
                                                               fontFamily:
                                                                   'DoppioOne',
-                                                              fontSize: 15,
+                                                              fontSize: 12,
                                                               color:
                                                                   Colors.white),
-                                                        ),
-                                                      ))
-                                                ],
-                                              )
-                                            ],
-                                          ))),
+                                                        )),
+                                                    Padding(
+                                                        padding:
+                                                            const EdgeInsets
+                                                                    .fromLTRB(
+                                                                100, 0, 0, 0),
+                                                        child: InkWell(
+                                                          onTap: () {
+                                                            redirectToPostPage(
+                                                                context,
+                                                                snapshot,
+                                                                index,
+                                                                text);
+                                                          },
+                                                          child: const Text(
+                                                            "Read More",
+                                                            textAlign:
+                                                                TextAlign.right,
+                                                            style: TextStyle(
+                                                                fontFamily:
+                                                                    'DoppioOne',
+                                                                fontSize: 15,
+                                                                color: Colors
+                                                                    .white),
+                                                          ),
+                                                        ))
+                                                  ],
+                                                )
+                                              ],
+                                            ))),
+                                  ),
                                   const Positioned(
                                       top: 10,
                                       right: 15,
