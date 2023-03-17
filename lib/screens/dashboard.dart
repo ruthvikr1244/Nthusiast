@@ -33,11 +33,11 @@ class dashboard extends StatelessWidget {
                         alignment: AlignmentDirectional.topStart,
                         child: Text(
                           'Good Evening,',
-                          textAlign: TextAlign.left,
+                          textAlign: TextAlign.start,
                           style: const TextStyle(
                             color: Colors.white,
                             fontSize: 40,
-                            fontFamily: 'Lalezar',
+                            fontFamily: 'DoppioOne',
                           ),
                         ),
                       ))),
@@ -51,8 +51,7 @@ class dashboard extends StatelessWidget {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) =>
-                                        clubs(title: 'clubs')));
+                                    builder: (context) => clubs()));
                           },
                           child: Card(
                             shape: RoundedRectangleBorder(
@@ -68,7 +67,7 @@ class dashboard extends StatelessWidget {
                                 style: const TextStyle(
                                     color: Colors.white,
                                     fontSize: 35,
-                                    fontFamily: 'Lalezar'),
+                                    fontFamily: 'DoppioOne'),
                               ),
                             ),
                           )))),
@@ -88,7 +87,7 @@ class dashboard extends StatelessWidget {
                         style: const TextStyle(
                             color: Colors.white,
                             fontSize: 35,
-                            fontFamily: 'Lalezar'),
+                            fontFamily: 'DoppioOne'),
                       ),
                     ),
                   )),
