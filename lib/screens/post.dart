@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:open_file/open_file.dart';
+import 'package:open_filex/open_filex.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:nthusiast/utils/time_formatter.dart';
@@ -182,7 +182,7 @@ Future fileHandling(imageUrl, context) async {
   try {
     await imgRef.writeToFile(tempFile);
     await tempFile.create();
-    await OpenFile.open(tempFile.path);
+    await OpenFilex.open(tempFile.path);
   } catch (e) {
     ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text("Error, could not open file")));

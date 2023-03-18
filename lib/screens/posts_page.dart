@@ -41,7 +41,7 @@ class PostsPage extends StatelessWidget {
 
                   return Stack(children: [
                     const Padding(
-                      padding: EdgeInsets.only(top: 20, left: 100),
+                      padding: EdgeInsets.fromLTRB(20, 100, 0, 0),
                       child: Text(
                         "Club Title",
                         textAlign: TextAlign.center,
