@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nthusiast/screens/clubs_page.dart';
+import 'package:nthusiast/screens/other_links.dart';
 
 class dashboard extends StatelessWidget {
   const dashboard({Key? key, required this.title}) : super(key: key);
@@ -71,26 +72,31 @@ class dashboard extends StatelessWidget {
                               ),
                             ),
                           )))),
-              Container(
-                  height: cardHeight,
-                  width: cardWidth,
-                  child: Card(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15)),
-                    color: Color.fromARGB(255, 121, 132, 228),
-                    elevation: 8,
-                    child: Padding(
-                      padding: EdgeInsets.fromLTRB(20, cardHeight - 70, 20, 0),
-                      child: Text(
-                        "Other Links",
-                        textAlign: TextAlign.left,
-                        style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 35,
-                            fontFamily: 'DoppioOne'),
+              GestureDetector(
+                onTap: () => Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => OtherLinks())),
+                child: Container(
+                    height: cardHeight,
+                    width: cardWidth,
+                    child: Card(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15)),
+                      color: Color.fromARGB(255, 121, 132, 228),
+                      elevation: 8,
+                      child: Padding(
+                        padding:
+                            EdgeInsets.fromLTRB(20, cardHeight - 70, 20, 0),
+                        child: Text(
+                          "Other Links",
+                          textAlign: TextAlign.left,
+                          style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 35,
+                              fontFamily: 'DoppioOne'),
+                        ),
                       ),
-                    ),
-                  )),
+                    )),
+              ),
             ],
           )
         ],

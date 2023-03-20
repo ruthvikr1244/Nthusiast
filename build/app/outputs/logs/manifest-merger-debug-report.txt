@@ -10,9 +10,9 @@ MERGED from [:firebase_auth] D:\Projects\nthusiast\build\firebase_auth\intermedi
 MERGED from [:firebase_storage] D:\Projects\nthusiast\build\firebase_storage\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-15:12
 MERGED from [:cloud_firestore] D:\Projects\nthusiast\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-15:12
 MERGED from [:firebase_core] D:\Projects\nthusiast\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-15:12
-MERGED from [:open_file] D:\Projects\nthusiast\build\open_file\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-24:12
+MERGED from [:url_launcher_android] D:\Projects\nthusiast\build\url_launcher_android\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-14:12
 MERGED from [:path_provider_android] D:\Projects\nthusiast\build\path_provider_android\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
-MERGED from [androidx.multidex:multidex:2.0.0] C:\Users\prana\.gradle\caches\transforms-2\files-2.1\a2f650a70b204393ba1526e0273d563e\multidex-2.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.multidex:multidex:2.0.1] C:\Users\prana\.gradle\caches\transforms-2\files-2.1\2d09096db7548b0ef6d8a0c0fcf99482\multidex-2.0.1\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.window:window-java:1.0.0-beta04] C:\Users\prana\.gradle\caches\transforms-2\files-2.1\ad201fac15a88598107ec645f351f5b4\jetified-window-java-1.0.0-beta04\AndroidManifest.xml:17:1-23:12
 MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\prana\.gradle\caches\transforms-2\files-2.1\03c633e46d75bfb21f082f0417f55161\jetified-window-1.0.0-beta04\AndroidManifest.xml:17:1-33:12
 MERGED from [androidx.legacy:legacy-support-v4:1.0.0] C:\Users\prana\.gradle\caches\transforms-2\files-2.1\25f3df754e4d43a563877bdf21983017\legacy-support-v4-1.0.0\AndroidManifest.xml:17:1-22:12
@@ -85,8 +85,6 @@ uses-permission#android.permission.READ_EXTERNAL_STORAGE
 ADDED from D:\Projects\nthusiast\android\app\src\main\AndroidManifest.xml:4:5-79
 MERGED from [:open_filex] D:\Projects\nthusiast\build\open_filex\intermediates\library_manifest\debug\AndroidManifest.xml:8:5-10:38
 MERGED from [:open_filex] D:\Projects\nthusiast\build\open_filex\intermediates\library_manifest\debug\AndroidManifest.xml:8:5-10:38
-MERGED from [:open_file] D:\Projects\nthusiast\build\open_file\intermediates\library_manifest\debug\AndroidManifest.xml:9:5-80
-MERGED from [:open_file] D:\Projects\nthusiast\build\open_file\intermediates\library_manifest\debug\AndroidManifest.xml:9:5-80
 	android:maxSdkVersion
 		ADDED from [:open_filex] D:\Projects\nthusiast\build\open_filex\intermediates\library_manifest\debug\AndroidManifest.xml:10:9-35
 	android:name
@@ -103,8 +101,8 @@ MERGED from [:cloud_firestore] D:\Projects\nthusiast\build\cloud_firestore\inter
 MERGED from [:cloud_firestore] D:\Projects\nthusiast\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
 MERGED from [:firebase_core] D:\Projects\nthusiast\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
 MERGED from [:firebase_core] D:\Projects\nthusiast\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
-MERGED from [:open_file] D:\Projects\nthusiast\build\open_file\intermediates\library_manifest\debug\AndroidManifest.xml:11:5-22:19
-MERGED from [:open_file] D:\Projects\nthusiast\build\open_file\intermediates\library_manifest\debug\AndroidManifest.xml:11:5-22:19
+MERGED from [:url_launcher_android] D:\Projects\nthusiast\build\url_launcher_android\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-12:19
+MERGED from [:url_launcher_android] D:\Projects\nthusiast\build\url_launcher_android\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-12:19
 MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\prana\.gradle\caches\transforms-2\files-2.1\03c633e46d75bfb21f082f0417f55161\jetified-window-1.0.0-beta04\AndroidManifest.xml:24:5-31:19
 MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\prana\.gradle\caches\transforms-2\files-2.1\03c633e46d75bfb21f082f0417f55161\jetified-window-1.0.0-beta04\AndroidManifest.xml:24:5-31:19
 MERGED from [com.google.firebase:firebase-auth:21.1.0] C:\Users\prana\.gradle\caches\transforms-2\files-2.1\ef4fcafab28b375fa4cfff55042b66c5\jetified-firebase-auth-21.1.0\AndroidManifest.xml:26:5-71:19
@@ -195,12 +193,12 @@ MERGED from [:cloud_firestore] D:\Projects\nthusiast\build\cloud_firestore\inter
 MERGED from [:cloud_firestore] D:\Projects\nthusiast\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:firebase_core] D:\Projects\nthusiast\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:firebase_core] D:\Projects\nthusiast\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:open_file] D:\Projects\nthusiast\build\open_file\intermediates\library_manifest\debug\AndroidManifest.xml:6:5-44
-MERGED from [:open_file] D:\Projects\nthusiast\build\open_file\intermediates\library_manifest\debug\AndroidManifest.xml:6:5-44
+MERGED from [:url_launcher_android] D:\Projects\nthusiast\build\url_launcher_android\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:url_launcher_android] D:\Projects\nthusiast\build\url_launcher_android\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:path_provider_android] D:\Projects\nthusiast\build\path_provider_android\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:path_provider_android] D:\Projects\nthusiast\build\path_provider_android\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [androidx.multidex:multidex:2.0.0] C:\Users\prana\.gradle\caches\transforms-2\files-2.1\a2f650a70b204393ba1526e0273d563e\multidex-2.0.0\AndroidManifest.xml:20:5-43
-MERGED from [androidx.multidex:multidex:2.0.0] C:\Users\prana\.gradle\caches\transforms-2\files-2.1\a2f650a70b204393ba1526e0273d563e\multidex-2.0.0\AndroidManifest.xml:20:5-43
+MERGED from [androidx.multidex:multidex:2.0.1] C:\Users\prana\.gradle\caches\transforms-2\files-2.1\2d09096db7548b0ef6d8a0c0fcf99482\multidex-2.0.1\AndroidManifest.xml:20:5-43
+MERGED from [androidx.multidex:multidex:2.0.1] C:\Users\prana\.gradle\caches\transforms-2\files-2.1\2d09096db7548b0ef6d8a0c0fcf99482\multidex-2.0.1\AndroidManifest.xml:20:5-43
 MERGED from [androidx.window:window-java:1.0.0-beta04] C:\Users\prana\.gradle\caches\transforms-2\files-2.1\ad201fac15a88598107ec645f351f5b4\jetified-window-java-1.0.0-beta04\AndroidManifest.xml:19:5-21:41
 MERGED from [androidx.window:window-java:1.0.0-beta04] C:\Users\prana\.gradle\caches\transforms-2\files-2.1\ad201fac15a88598107ec645f351f5b4\jetified-window-java-1.0.0-beta04\AndroidManifest.xml:19:5-21:41
 MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\prana\.gradle\caches\transforms-2\files-2.1\03c633e46d75bfb21f082f0417f55161\jetified-window-1.0.0-beta04\AndroidManifest.xml:20:5-22:41
@@ -391,22 +389,14 @@ ADDED from [:firebase_core] D:\Projects\nthusiast\build\firebase_core\intermedia
 		ADDED from [:firebase_core] D:\Projects\nthusiast\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
 	android:name
 		ADDED from [:firebase_core] D:\Projects\nthusiast\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-124
-uses-permission#android.permission.REQUEST_INSTALL_PACKAGES
-ADDED from [:open_file] D:\Projects\nthusiast\build\open_file\intermediates\library_manifest\debug\AndroidManifest.xml:8:5-83
-	android:name
-		ADDED from [:open_file] D:\Projects\nthusiast\build\open_file\intermediates\library_manifest\debug\AndroidManifest.xml:8:22-80
-provider#androidx.core.content.FileProvider
-ADDED from [:open_file] D:\Projects\nthusiast\build\open_file\intermediates\library_manifest\debug\AndroidManifest.xml:12:9-21:20
-	android:grantUriPermissions
-		ADDED from [:open_file] D:\Projects\nthusiast\build\open_file\intermediates\library_manifest\debug\AndroidManifest.xml:16:13-47
-	android:authorities
-		ADDED from [:open_file] D:\Projects\nthusiast\build\open_file\intermediates\library_manifest\debug\AndroidManifest.xml:14:13-64
+activity#io.flutter.plugins.urllauncher.WebViewActivity
+ADDED from [:url_launcher_android] D:\Projects\nthusiast\build\url_launcher_android\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-11:74
 	android:exported
-		ADDED from [:open_file] D:\Projects\nthusiast\build\open_file\intermediates\library_manifest\debug\AndroidManifest.xml:15:13-37
-	tools:replace
-		ADDED from [:open_file] D:\Projects\nthusiast\build\open_file\intermediates\library_manifest\debug\AndroidManifest.xml:17:13-48
+		ADDED from [:url_launcher_android] D:\Projects\nthusiast\build\url_launcher_android\intermediates\library_manifest\debug\AndroidManifest.xml:10:13-37
+	android:theme
+		ADDED from [:url_launcher_android] D:\Projects\nthusiast\build\url_launcher_android\intermediates\library_manifest\debug\AndroidManifest.xml:11:13-71
 	android:name
-		ADDED from [:open_file] D:\Projects\nthusiast\build\open_file\intermediates\library_manifest\debug\AndroidManifest.xml:13:13-62
+		ADDED from [:url_launcher_android] D:\Projects\nthusiast\build\url_launcher_android\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-74
 uses-library#androidx.window.extensions
 ADDED from [androidx.window:window:1.0.0-beta04] C:\Users\prana\.gradle\caches\transforms-2\files-2.1\03c633e46d75bfb21f082f0417f55161\jetified-window-1.0.0-beta04\AndroidManifest.xml:25:9-27:40
 	android:required

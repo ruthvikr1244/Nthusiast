@@ -1,11 +1,12 @@
-import 'dart:convert';
 import 'dart:io';
 
+import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:open_filex/open_filex.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:nthusiast/utils/time_formatter.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class Post extends StatelessWidget {
   const Post({Key? key, required this.data, required this.length})
@@ -37,6 +38,7 @@ class Post extends StatelessWidget {
         children: <Widget>[
           Center(
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Padding(
                   padding: const EdgeInsets.fromLTRB(0, 50, 0, 10),
@@ -44,21 +46,19 @@ class Post extends StatelessWidget {
                     data["Title"],
                     textAlign: TextAlign.center,
                     style: const TextStyle(
-                        fontFamily: 'DoppioOne',
-                        color: Colors.white,
-                        fontSize: 30),
+                        fontFamily: 'Inter', color: Colors.white, fontSize: 30),
                   ),
                 ),
                 Text(
                   "From " + data["Author"],
                   textAlign: TextAlign.center,
                   style: const TextStyle(
-                    fontFamily: 'DoppioOne',
+                    fontFamily: 'Inter',
                     color: Colors.white,
                   ),
                 ),
                 SizedBox(
-                    height: MediaQuery.of(context).size.height / 1.2,
+                    height: MediaQuery.of(context).size.height / 1.3,
                     width: MediaQuery.of(context).size.width,
                     child: Padding(
                       padding: const EdgeInsets.fromLTRB(10, 20, 10, 40),
@@ -68,11 +68,15 @@ class Post extends StatelessWidget {
                           child: Padding(
                             padding: const EdgeInsets.all(20),
                             child: ListView(children: [
-                              Text(
-                                utf8.decode(base64Url.decode(data["Content"])),
-                                style: const TextStyle(
-                                    fontFamily: "DoppioOne", fontSize: 14),
-                              ),
+                              MarkdownBody(
+                                  data: data["Content"]
+                                      .toString()
+                                      .replaceAll("~~", "\\\n \\\n")
+                                      .replaceAll("~", "\\\n"),
+                                  selectable: true,
+                                  onTapLink: (text, href, title) => href != null
+                                      ? launchUrlString(href)
+                                      : null),
                               Padding(
                                   padding: const EdgeInsets.only(top: 20),
                                   child: Column(
@@ -88,7 +92,7 @@ class Post extends StatelessWidget {
                                                     "Attatchments",
                                                     textAlign: TextAlign.left,
                                                     style: TextStyle(
-                                                        fontFamily: "DoppioOne",
+                                                        fontFamily: "Inter",
                                                         fontSize: 15),
                                                   )),
                                               GridView.builder(
@@ -102,6 +106,8 @@ class Post extends StatelessWidget {
                                                       data["Attatchments"]
                                                           .length,
                                                   itemBuilder: ((context, i) {
+                                                    final imgName =
+                                                        data["Attatchments"][i];
                                                     return Padding(
                                                         padding:
                                                             const EdgeInsets
@@ -124,19 +130,26 @@ class Post extends StatelessWidget {
                                                               mainAxisAlignment:
                                                                   MainAxisAlignment
                                                                       .center,
-                                                              children: const [
-                                                                Icon(
+                                                              children: [
+                                                                const Icon(
                                                                   Icons
                                                                       .attachment,
                                                                   color: Colors
                                                                       .white,
                                                                 ),
                                                                 Text(
-                                                                  "FileName",
+                                                                  imgName.toString().substring(
+                                                                      imgName.toString().lastIndexOf(
+                                                                              '/') +
+                                                                          1,
+                                                                      imgName
+                                                                          .toString()
+                                                                          .lastIndexOf(
+                                                                              '.')),
                                                                   overflow:
                                                                       TextOverflow
                                                                           .ellipsis,
-                                                                  style: TextStyle(
+                                                                  style: const TextStyle(
                                                                       color: Colors
                                                                           .white),
                                                                 )
@@ -157,7 +170,7 @@ class Post extends StatelessWidget {
                     )),
                 Text(
                   timeFormatter(data["Time"].toDate())[1],
-                  style: const TextStyle(fontFamily: "DoppioOne"),
+                  style: const TextStyle(fontFamily: "Inter"),
                 )
               ],
             ),
@@ -172,7 +185,7 @@ Future fileHandling(imageUrl, context) async {
   final imgRef = FirebaseStorage.instance.refFromURL(imageUrl);
 
   final imageName = imageUrl.toString().substring(
-      imageUrl.toString().lastIndexOf('/'),
+      imageUrl.toString().lastIndexOf('/') + 1,
       imageUrl.toString().lastIndexOf('.'));
 
   final appDocDir = await getApplicationDocumentsDirectory();
@@ -190,4 +203,6 @@ Future fileHandling(imageUrl, context) async {
 
   ScaffoldMessenger.of(context)
       .showSnackBar(SnackBar(content: Text("$imageName downloaded")));
+
+  print(imageName);
 }

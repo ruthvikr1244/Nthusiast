@@ -19,7 +19,6 @@
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
     <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
     <uses-permission android:name="android.permission.READ_MEDIA_AUDIO" />
-    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
@@ -108,15 +107,10 @@
                 android:value="com.google.firebase.components.ComponentRegistrar" />
         </service>
 
-        <provider
-            android:name="androidx.core.content.FileProvider"
-            android:authorities="com.example.nthusiast.fileProvider"
+        <activity
+            android:name="io.flutter.plugins.urllauncher.WebViewActivity"
             android:exported="false"
-            android:grantUriPermissions="true" >
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/filepaths" />
-        </provider>
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
 
         <uses-library
             android:name="androidx.window.extensions"
