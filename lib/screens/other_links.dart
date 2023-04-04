@@ -235,10 +235,10 @@ class bgPainter extends CustomPainter {
             Color.fromRGBO(239, 40, 40, 0.94),
             Color.fromRGBO(255, 0, 0, 0.52)
           ]).createShader(
-          Rect.fromCircle(center: Offset(0, -150), radius: size.width / 1.5))
+          Rect.fromCircle(center: const Offset(0, -150), radius: size.width / 1.5))
       ..style = PaintingStyle.fill;
 
-    canvas.drawCircle(Offset(200, -170), size.width / 1.5, paint1);
+    canvas.drawCircle(const Offset(200, -170), size.width / 1.5, paint1);
   }
 
   @override

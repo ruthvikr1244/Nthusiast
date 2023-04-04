@@ -39,10 +39,10 @@ dependencies:
   firebase_auth: ^4.2.9
   firebase_storage: ^11.0.14
   path_provider: ^2.0.13
-  open_filex: ^4.3.2
   flutter_markdown: ^0.6.14
   url_launcher: ^6.1.10
   markdown_widget: ^2.1.0
+  open_filex: ^4.3.2
 
 dev_dependencies:
   flutter_test:

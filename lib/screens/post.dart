@@ -1,12 +1,12 @@
 import 'dart:io';
 
 import 'package:flutter_markdown/flutter_markdown.dart';
-import 'package:open_filex/open_filex.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:nthusiast/utils/time_formatter.dart';
+import 'package:open_filex/open_filex.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:url_launcher/url_launcher_string.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Post extends StatelessWidget {
   const Post({Key? key, required this.data, required this.length})
@@ -43,14 +43,14 @@ class Post extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.fromLTRB(0, 50, 0, 10),
                   child: Text(
-                    data["Title"],
+                    data["title"],
                     textAlign: TextAlign.center,
                     style: const TextStyle(
                         fontFamily: 'Inter', color: Colors.white, fontSize: 30),
                   ),
                 ),
                 Text(
-                  "From " + data["Author"],
+                  "From " + data["author"],
                   textAlign: TextAlign.center,
                   style: const TextStyle(
                     fontFamily: 'Inter',
@@ -69,27 +69,28 @@ class Post extends StatelessWidget {
                             padding: const EdgeInsets.all(20),
                             child: ListView(children: [
                               MarkdownBody(
-                                  data: data["Content"]
+                                  data: data["content"]
                                       .toString()
                                       .replaceAll("~~", "\\\n \\\n")
                                       .replaceAll("~", "\\\n"),
                                   selectable: true,
                                   onTapLink: (text, href, title) => href != null
-                                      ? launchUrlString(href)
+                                      ? launchUrl(Uri.parse(href),
+                                          mode: LaunchMode.externalApplication)
                                       : null),
                               Padding(
                                   padding: const EdgeInsets.only(top: 20),
                                   child: Column(
                                       mainAxisAlignment:
                                           MainAxisAlignment.start,
-                                      children: data.data()["Attatchments"] !=
+                                      children: data.data()["attachments"] !=
                                               null
                                           ? <Widget>[
                                               const Padding(
                                                   padding: EdgeInsets.only(
                                                       bottom: 25),
                                                   child: Text(
-                                                    "Attatchments",
+                                                    "attachments",
                                                     textAlign: TextAlign.left,
                                                     style: TextStyle(
                                                         fontFamily: "Inter",
@@ -102,12 +103,11 @@ class Post extends StatelessWidget {
                                                   gridDelegate:
                                                       const SliverGridDelegateWithFixedCrossAxisCount(
                                                           crossAxisCount: 3),
-                                                  itemCount:
-                                                      data["Attatchments"]
-                                                          .length,
+                                                  itemCount: data["attachments"]
+                                                      .length,
                                                   itemBuilder: ((context, i) {
                                                     final imgName =
-                                                        data["Attatchments"][i];
+                                                        data["attachments"][i];
                                                     return Padding(
                                                         padding:
                                                             const EdgeInsets
@@ -115,7 +115,7 @@ class Post extends StatelessWidget {
                                                         child: GestureDetector(
                                                           onTap: () => {
                                                             fileHandling(
-                                                                data["Attatchments"]
+                                                                data["attachments"]
                                                                     [i],
                                                                 context)
                                                           },
@@ -169,7 +169,7 @@ class Post extends StatelessWidget {
                           )),
                     )),
                 Text(
-                  timeFormatter(data["Time"].toDate())[1],
+                  timeFormatter(data["time"].toDate())[1],
                   style: const TextStyle(fontFamily: "Inter"),
                 )
               ],
@@ -185,24 +185,21 @@ Future fileHandling(imageUrl, context) async {
   final imgRef = FirebaseStorage.instance.refFromURL(imageUrl);
 
   final imageName = imageUrl.toString().substring(
-      imageUrl.toString().lastIndexOf('/') + 1,
-      imageUrl.toString().lastIndexOf('.'));
+      imageUrl.toString().lastIndexOf('/'), imageUrl.toString().length);
 
   final appDocDir = await getApplicationDocumentsDirectory();
 
   final String appDocPath = appDocDir.path;
-  final File tempFile = File('$appDocPath/$imageName.pdf');
+  final File tempFile = File('$appDocPath/$imageName');
   try {
     await imgRef.writeToFile(tempFile);
     await tempFile.create();
     await OpenFilex.open(tempFile.path);
+
+    ScaffoldMessenger.of(context)
+        .showSnackBar(SnackBar(content: Text("$imageName downloaded")));
   } catch (e) {
     ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text("Error, could not open file")));
   }
-
-  ScaffoldMessenger.of(context)
-      .showSnackBar(SnackBar(content: Text("$imageName downloaded")));
-
-  print(imageName);
 }

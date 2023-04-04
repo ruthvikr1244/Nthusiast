@@ -1,17 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:nthusiast/screens/post.dart';
+import 'package:nthusiast/utils/markdown_body_overflow.dart';
 import 'package:nthusiast/utils/time_formatter.dart';
 
 class PostsPage extends StatelessWidget {
-  PostsPage({Key? key}) : super(key: key);
+  var docDetails;
 
-  final Stream<QuerySnapshot> _postStream = FirebaseFirestore.instance
-      .collection("clubs")
-      .doc("Abhinaya")
-      .collection("posts")
-      .orderBy("Time", descending: true)
-      .snapshots();
+  PostsPage({Key? key, required this.docDetails}) : super(key: key);
 
   void redirectToPostPage(context, snapshot, index, text) {
     Navigator.push(
@@ -25,11 +21,18 @@ class PostsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Stream<QuerySnapshot> postStream = FirebaseFirestore.instance
+        .collection("clubs")
+        .doc(docDetails.reference.id.toString())
+        .collection("Posts")
+        .orderBy("time", descending: true)
+        .snapshots();
+
     return Scaffold(
         body: CustomPaint(
             painter: bgPainter(),
             child: StreamBuilder<QuerySnapshot>(
-                stream: _postStream,
+                stream: postStream,
                 builder: (BuildContext context,
                     AsyncSnapshot<QuerySnapshot> snapshot) {
                   if (snapshot.hasError) {
@@ -41,27 +44,38 @@ class PostsPage extends StatelessWidget {
 
                   return Stack(
                     children: <Widget>[
-                      const Padding(
-                          padding: EdgeInsets.fromLTRB(100, 27, 0, 0),
-                          child: Text(
-                            'Club Title',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 40,
+                      SizedBox(
+                        height: 70,
+                        width: MediaQuery.of(context).size.width,
+                        child: FittedBox(
+                          fit: BoxFit.fitWidth,
+                          alignment: Alignment.center,
+                          child: Padding(
+                            padding: const EdgeInsets.only(
+                                top: 30, left: 30, right: 30),
+                            child: Text(
+                              docDetails["name"],
+                              textAlign: TextAlign.center,
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 25,
+                              ),
                             ),
-                          )),
+                          ),
+                        ),
+                      ),
                       Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 140, 0, 5),
+                        padding: const EdgeInsets.fromLTRB(0, 180, 0, 0),
                         child: ListView.builder(
+                          padding: const EdgeInsets.all(0),
                           shrinkWrap: true,
                           itemCount: snapshot.data!.docs.length,
                           itemBuilder: (context, index) {
-                            var text = snapshot.data!.docs[index]["Content"]
+                            var text = snapshot.data!.docs[index]["content"]
                                 .toString();
 
                             var t = timeFormatter(
-                                snapshot.data!.docs[index]["Time"].toDate())[0];
+                                snapshot.data!.docs[index]["time"].toDate())[0];
 
                             return GestureDetector(
                               onTap: () => redirectToPostPage(
@@ -71,56 +85,45 @@ class PostsPage extends StatelessWidget {
                                   Padding(
                                     padding: const EdgeInsets.only(
                                         top: 10, left: 10, right: 10),
-                                    child: Card(
-                                      elevation: 8,
-                                      shape: const RoundedRectangleBorder(
+                                    child: Container(
+                                      decoration: const BoxDecoration(
+                                          color:
+                                              Color.fromARGB(173, 239, 40, 40),
                                           borderRadius: BorderRadius.only(
-                                        topLeft: Radius.circular(15),
-                                        topRight: Radius.circular(15),
-                                      )),
-                                      child: Container(
-                                        decoration: const BoxDecoration(
-                                            color: Color.fromARGB(
-                                                173, 239, 40, 40),
-                                            borderRadius: BorderRadius.only(
-                                              topLeft: Radius.circular(15),
-                                              topRight: Radius.circular(15),
-                                            )),
-                                        height: 50,
-                                        width:
-                                            MediaQuery.of(context).size.width,
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Padding(
-                                              padding: const EdgeInsets.only(
-                                                  left: 20),
-                                              child: Text(
-                                                snapshot.data!.docs[index]
-                                                    ["Category"],
-                                                style: const TextStyle(
-                                                    fontFamily: "Inter",
-                                                    fontSize: 14,
-                                                    fontWeight:
-                                                        FontWeight.w700),
-                                              ),
+                                            topLeft: Radius.circular(15),
+                                            topRight: Radius.circular(15),
+                                          )),
+                                      height: 50,
+                                      width: MediaQuery.of(context).size.width,
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                const EdgeInsets.only(left: 20),
+                                            child: Text(
+                                              snapshot.data!.docs[index]
+                                                  ["category"],
+                                              style: const TextStyle(
+                                                  fontFamily: "Inter",
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.w700),
                                             ),
-                                            Padding(
-                                              padding: const EdgeInsets.only(
-                                                  right: 25),
-                                              child: Text(
-                                                t,
-                                                style: const TextStyle(
-                                                    fontFamily: "Inter",
-                                                    fontSize: 14,
-                                                    fontWeight:
-                                                        FontWeight.w700),
-                                              ),
-                                            )
-                                          ],
-                                        ),
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.only(
+                                                right: 25),
+                                            child: Text(
+                                              t,
+                                              style: const TextStyle(
+                                                  fontFamily: "Inter",
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.w700),
+                                            ),
+                                          )
+                                        ],
                                       ),
                                     ),
                                   ),
@@ -157,7 +160,7 @@ class PostsPage extends StatelessWidget {
                                           children: [
                                             Text(
                                               snapshot.data!.docs[index]
-                                                  ["Title"],
+                                                  ["title"],
                                               textAlign: TextAlign.center,
                                               style: const TextStyle(
                                                 fontFamily: "Inter",
@@ -166,24 +169,23 @@ class PostsPage extends StatelessWidget {
                                               ),
                                             ),
                                             SizedBox(
-                                              height: 50,
-                                              width: MediaQuery.of(context)
-                                                      .size
-                                                      .width /
-                                                  1.3,
-                                              child: Text(
-                                                snapshot.data!
-                                                    .docs[index]["Content"]
-                                                    .toString(),
-                                                overflow: TextOverflow.fade,
-                                                style: const TextStyle(
-                                                    fontFamily: "Inter",
-                                                    fontSize: 12),
-                                              ),
-                                            ),
+                                                height: 80,
+                                                width: MediaQuery.of(context)
+                                                        .size
+                                                        .width /
+                                                    1.3,
+                                                child: SingleLineMarkdownBody(
+                                                    data: snapshot.data!
+                                                        .docs[index]["content"]
+                                                        .toString()
+                                                        .replaceAll("~~", "  ")
+                                                        .replaceAll("~", "  "),
+                                                    overflow:
+                                                        TextOverflow.ellipsis,
+                                                    maxLines: 10)),
                                             const Padding(
                                               padding:
-                                                  EdgeInsets.only(right: 10),
+                                                  EdgeInsets.only(right: 15),
                                               child: Align(
                                                   alignment: Alignment(1, 1),
                                                   child: Text(
@@ -203,7 +205,7 @@ class PostsPage extends StatelessWidget {
                                   snapshot.data!.docs[index]
                                           .data()
                                           .toString()
-                                          .contains("Attatchments")
+                                          .contains("attatchments")
                                       ? const Positioned(
                                           top: 10,
                                           right: 20,
@@ -236,11 +238,11 @@ class bgPainter extends CustomPainter {
           colors: <Color>[
             Color.fromRGBO(239, 40, 40, 0.94),
             Color.fromRGBO(255, 0, 0, 0.52)
-          ]).createShader(
-          Rect.fromCircle(center: Offset(0, -150), radius: size.width / 1.5))
+          ]).createShader(Rect.fromCircle(
+          center: const Offset(0, -150), radius: size.width / 1.5))
       ..style = PaintingStyle.fill;
 
-    canvas.drawCircle(Offset(200, -170), size.width / 1.5, paint1);
+    canvas.drawCircle(const Offset(200, -120), size.width / 1.5, paint1);
   }
 
   @override

@@ -7,11 +7,7 @@ class dashboard extends StatelessWidget {
   final String title;
   @override
   Widget build(BuildContext context) {
-    final gradient = LinearGradient(colors: [
-      Colors.purple, Colors.blue
-      // Color.fromARGB(1, 194, 98, 205),
-      // Color.fromARGB(1, 4, 79, 171)
-    ]);
+    const gradient = LinearGradient(colors: [Colors.purple, Colors.blue]);
 
     final cardHeight = MediaQuery.of(context).size.width / 2;
     final cardWidth = MediaQuery.of(context).size.width;
@@ -30,21 +26,21 @@ class dashboard extends StatelessWidget {
                       shaderCallback: (Rect bounds) {
                         return gradient.createShader(Offset.zero & bounds.size);
                       },
-                      child: Align(
+                      child: const Align(
                         alignment: AlignmentDirectional.topStart,
                         child: Text(
                           'Good Evening,',
                           textAlign: TextAlign.start,
-                          style: const TextStyle(
+                          style: TextStyle(
                             color: Colors.white,
                             fontSize: 40,
-                            fontFamily: 'DoppioOne',
+                            fontFamily: 'Inter',
                           ),
                         ),
                       ))),
               Padding(
-                  padding: EdgeInsets.only(bottom: 20),
-                  child: Container(
+                  padding: const EdgeInsets.only(bottom: 20),
+                  child: SizedBox(
                       height: cardHeight,
                       width: cardWidth,
                       child: GestureDetector(
@@ -57,42 +53,42 @@ class dashboard extends StatelessWidget {
                           child: Card(
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(15)),
-                            color: Color.fromARGB(174, 73, 189, 63),
+                            color: const Color.fromARGB(174, 73, 189, 63),
                             elevation: 8,
                             child: Padding(
                               padding: EdgeInsets.fromLTRB(
                                   20, cardHeight - 70, 20, 0),
-                              child: Text(
+                              child: const Text(
                                 "Clubs",
                                 textAlign: TextAlign.left,
-                                style: const TextStyle(
+                                style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 35,
-                                    fontFamily: 'DoppioOne'),
+                                    fontFamily: 'Inter'),
                               ),
                             ),
                           )))),
               GestureDetector(
                 onTap: () => Navigator.push(context,
                     MaterialPageRoute(builder: (context) => OtherLinks())),
-                child: Container(
+                child: SizedBox(
                     height: cardHeight,
                     width: cardWidth,
                     child: Card(
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(15)),
-                      color: Color.fromARGB(255, 121, 132, 228),
+                      color: const Color.fromARGB(255, 121, 132, 228),
                       elevation: 8,
                       child: Padding(
                         padding:
                             EdgeInsets.fromLTRB(20, cardHeight - 70, 20, 0),
-                        child: Text(
+                        child: const Text(
                           "Other Links",
                           textAlign: TextAlign.left,
-                          style: const TextStyle(
+                          style: TextStyle(
                               color: Colors.white,
                               fontSize: 35,
-                              fontFamily: 'DoppioOne'),
+                              fontFamily: 'Inter'),
                         ),
                       ),
                     )),

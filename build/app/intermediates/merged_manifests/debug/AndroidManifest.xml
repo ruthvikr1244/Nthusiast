@@ -28,6 +28,16 @@
         android:icon="@mipmap/ic_launcher"
         android:label="nthusiast"
         android:requestLegacyExternalStorage="true" >
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.example.nthusiast.fileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true" >
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/filepaths" />
+        </provider>
+5
         <activity
             android:name="com.example.nthusiast.MainActivity"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"

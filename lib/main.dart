@@ -54,13 +54,13 @@ class _LoginScreenState extends State<LoginScreen> {
       }
     });
 
-    const purple = Color(0xC262CD);
-    const blue = Color(0x044FAB);
+    const purple = Color(0x00c262cd);
+    const blue = Color(0x00044fab);
 
     final nameController = TextEditingController();
     final db = FirebaseFirestore.instance;
 
-    final gradient = LinearGradient(colors: [
+    const gradient = LinearGradient(colors: [
       Colors.purple, Colors.blue
       // Color.fromARGB(1, 194, 98, 205),
       // Color.fromARGB(1, 4, 79, 171)
@@ -78,18 +78,18 @@ class _LoginScreenState extends State<LoginScreen> {
                     shaderCallback: (Rect bounds) {
                       return gradient.createShader(Offset.zero & bounds.size);
                     },
-                    child: Center(
+                    child: const Center(
                       child: Text(
                         'Nthusiast',
                         textAlign: TextAlign.center,
-                        style: const TextStyle(
+                        style: TextStyle(
                             color: Colors.white,
                             fontSize: 50,
                             fontFamily: 'Lalezar'),
                       ),
                     ))),
             Padding(
-                padding: EdgeInsets.fromLTRB(40, 100, 40, 100),
+                padding: const EdgeInsets.fromLTRB(40, 100, 40, 100),
                 child: DecoratedBox(
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(15),
@@ -97,7 +97,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           BoxShadow(
                               spreadRadius: 3,
                               color: Colors.grey.shade300,
-                              offset: Offset(0, 4),
+                              offset: const Offset(0, 4),
                               blurRadius: 3)
                         ]),
                     child: TextField(
@@ -124,8 +124,9 @@ class _LoginScreenState extends State<LoginScreen> {
               },
               child: Center(
                 child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(primary: Colors.white),
-                  child: Text(
+                  style:
+                      ElevatedButton.styleFrom(backgroundColor: Colors.white),
+                  child: const Text(
                     "Go!",
                     style: TextStyle(fontSize: 25, color: Colors.white),
                   ),
@@ -157,13 +158,13 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
             )),
-            Padding(
-                padding: const EdgeInsets.fromLTRB(0, 170, 0, 10),
+            const Padding(
+                padding: EdgeInsets.fromLTRB(0, 170, 0, 10),
                 child: Center(
                   child: Text(
                     "If you don't have an account, we'll create one for you!",
                     textAlign: TextAlign.center,
-                    style: const TextStyle(
+                    style: TextStyle(
                         color: Colors.grey,
                         fontSize: 15,
                         fontFamily: 'Lalezar'),
