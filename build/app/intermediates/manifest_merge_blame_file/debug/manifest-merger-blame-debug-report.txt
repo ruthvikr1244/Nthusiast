@@ -60,7 +60,7 @@
 38                android:resource="@xml/filepaths" />
 38-->[:open_filex] D:\Projects\nthusiast\build\open_filex\intermediates\library_manifest\debug\AndroidManifest.xml:24:17-50
 39        </provider>
-405
+40
 41        <activity
 41-->D:\Projects\nthusiast\android\app\src\main\AndroidManifest.xml:17:9-45:20
 42            android:name="com.example.nthusiast.MainActivity"

@@ -129,10 +129,7 @@ class PostsPage extends StatelessWidget {
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.only(
-                                        top: 50,
-                                        left: 10,
-                                        right: 10,
-                                        bottom: 20),
+                                        top: 50, left: 5, right: 5, bottom: 20),
                                     child: Card(
                                       elevation: 8,
                                       shape: const RoundedRectangleBorder(
